@@ -1,0 +1,73 @@
+[System]
+Name='Simulacion pronostico de caudal matlab FUZZY'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=27
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='caudal_1'
+Range=[0 800]
+NumMFs=3
+MF1='bajo':'trapmf',[0 0 250 350]
+MF2='medio':'trimf',[250 400 550]
+MF3='alto':'trapmf',[450 550 800 800]
+
+[Input2]
+Name='caudal_2'
+Range=[100 800]
+NumMFs=3
+MF1='bajo':'trapmf',[100 100 230 350]
+MF2='medio':'trimf',[250 400 550]
+MF3='alto':'trapmf',[450 550 800 800]
+
+[Input3]
+Name='cauldal_3'
+Range=[100 800]
+NumMFs=3
+MF1='medio':'trimf',[250 400 550]
+MF2='bajo':'trapmf',[0 0 250 350]
+MF3='alto':'trapmf',[450 550 800 800]
+
+[Output1]
+Name='caudal_pronosticado'
+Range=[0 800]
+NumMFs=3
+MF1='disminuye':'trapmf',[0 0 250 350]
+MF2='mantiene':'trimf',[250 400 550]
+MF3='aumenta':'trapmf',[450 550 800 800]
+
+[Rules]
+1 1 2, 1 (1) : 1
+1 1 1, 1 (1) : 1
+1 1 3, 2 (1) : 1
+1 2 2, 1 (1) : 1
+1 2 1, 2 (1) : 1
+1 2 3, 3 (1) : 1
+1 3 2, 1 (1) : 1
+1 3 1, 2 (1) : 1
+1 3 3, 3 (1) : 1
+2 1 2, 1 (1) : 1
+2 1 1, 2 (1) : 1
+2 1 3, 3 (1) : 1
+2 2 2, 2 (1) : 1
+2 2 1, 2 (1) : 1
+2 2 3, 3 (1) : 1
+2 3 2, 1 (1) : 1
+2 3 1, 2 (1) : 1
+2 3 3, 3 (1) : 1
+3 1 2, 1 (1) : 1
+3 1 1, 2 (1) : 1
+3 1 3, 3 (1) : 1
+3 2 2, 1 (1) : 1
+3 2 1, 2 (1) : 1
+3 2 3, 3 (1) : 1
+3 3 2, 2 (1) : 1
+3 3 1, 3 (1) : 1
+3 3 3, 3 (1) : 1
